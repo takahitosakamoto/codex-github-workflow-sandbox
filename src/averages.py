@@ -18,4 +18,6 @@ def median(values: Sequence[float]) -> float:
 
     ordered = sorted(values)
     middle = len(ordered) // 2
-    return float(ordered[middle])
+    if len(ordered) % 2:
+        return float(ordered[middle])
+    return mean((ordered[middle - 1], ordered[middle]))
