@@ -9,3 +9,15 @@ def mean(values: Sequence[float]) -> float:
     if len(values) == 0:
         raise ValueError("mean requires at least one value")
     return fsum(values) / len(values)
+
+
+def median(values: Sequence[float]) -> float:
+    """Return the median of a non-empty sequence without mutating it."""
+    if len(values) == 0:
+        raise ValueError("median requires at least one value")
+
+    ordered = sorted(values)
+    middle = len(ordered) // 2
+    if len(ordered) % 2:
+        return float(ordered[middle])
+    return mean((ordered[middle - 1], ordered[middle]))
